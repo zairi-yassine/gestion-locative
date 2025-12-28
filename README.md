@@ -1,4 +1,4 @@
-## Cahier des charges simplifié – Application de Gestion Locative (Mobile)
+## Cahier des charges  – Application de Gestion Locative (Mobile)
 
 ### Objectif
 Proposer une application mobile simple pour gérer quelques biens immobiliers, suivre les locataires, enregistrer les paiements des loyers et éditer les contrats. L'interface doit être facile à prendre en main et éviter la complexité inutile.
@@ -28,3 +28,4 @@ Proposer une application mobile simple pour gérer quelques biens immobiliers, s
 - Authentification simple par email et mot de passe
 - Protection basique des données personnelles des locataires
 - Stockage sécurisé avec MongoDB
+
