@@ -15,9 +15,9 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const colorScheme = useColorScheme();
-  const colors = Colors[colorScheme];
-  const modernStyles = createModernStyles(colorScheme);
-  const shadow = Shadows[colorScheme];
+  const colors = Colors[colorScheme ?? 'light'];
+  const modernStyles = createModernStyles(colorScheme ?? 'light');
+  const shadow = Shadows[colorScheme ?? 'light'];
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

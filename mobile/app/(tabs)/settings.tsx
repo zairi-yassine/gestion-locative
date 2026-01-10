@@ -8,7 +8,7 @@ import { Colors, Spacing, BorderRadius, Shadows } from '@/constants/theme';
 import { createModernStyles } from '@/constants/styles';
 
 export default function SettingsScreen() {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme()?? 'light';
   const colors = Colors[colorScheme];
   const modernStyles = createModernStyles(colorScheme);
   const shadow = Shadows[colorScheme];

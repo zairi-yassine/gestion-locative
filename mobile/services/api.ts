@@ -2,6 +2,8 @@ import axios from 'axios';
 import { getToken, removeToken } from '@/utils/auth';
 import { router } from 'expo-router';
 import { Alert } from 'react-native';
+import { auth } from './firebase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 // Pour Expo Go sur appareil physique: utilisez l'IP de votre PC
 const API_URL = 'http://192.168.1.36:5000/api';
@@ -19,7 +21,13 @@ const api = axios.create({
 api.interceptors.request.use(async (config) => {
   const token = await getToken();
   if (token) {
+    // Debug: log token presence (do not log full token in production)
+    try {
+      console.log('Attaching auth token, length=', token.length);
+    } catch (e) {}
     config.headers.Authorization = `Bearer ${token}`;
+  } else {
+    console.log('No auth token found when making request to', config.url);
   }
   return config;
 });
@@ -45,13 +53,17 @@ api.interceptors.response.use(
 
 // ========== AUTHENTIFICATION ==========
 export async function register(email: string, password: string, name?: string) {
-  const res = await api.post('/auth/register', { email, password, name });
-  return res.data;
+  // Create user in Firebase Auth and return ID token + user info
+  const userCred = await createUserWithEmailAndPassword(auth, email, password);
+  const idToken = await userCred.user.getIdToken();
+  return { token: idToken, user: { email: userCred.user.email } };
 }
 
 export async function login(email: string, password: string) {
-  const res = await api.post('/auth/login', { email, password });
-  return res.data;
+  // Sign in with Firebase Auth and return ID token + user info
+  const userCred = await signInWithEmailAndPassword(auth, email, password);
+  const idToken = await userCred.user.getIdToken();
+  return { token: idToken, user: { email: userCred.user.email } };
 }
 
 // ========== PROPRIÉTÉS ==========

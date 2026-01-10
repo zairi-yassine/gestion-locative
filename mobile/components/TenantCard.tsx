@@ -20,7 +20,7 @@ export function TenantCard({
   onEdit,
   onDelete,
 }: TenantCardProps) {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme()?? 'light';
   const colors = Colors[colorScheme];
   const shadow = Shadows[colorScheme];
 

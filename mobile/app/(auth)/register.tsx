@@ -15,7 +15,7 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme() ?? 'light';
   const colors = Colors[colorScheme];
   const modernStyles = createModernStyles(colorScheme);
 

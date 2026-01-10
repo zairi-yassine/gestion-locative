@@ -12,7 +12,7 @@ export default function PaymentsScreen() {
   const [payments, setPayments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme() ?? 'light';
   const colors = Colors[colorScheme];
   const modernStyles = createModernStyles(colorScheme);
   const shadow = Shadows[colorScheme];

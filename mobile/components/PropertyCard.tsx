@@ -20,7 +20,7 @@ export function PropertyCard({
   onEdit,
   onDelete,
 }: PropertyCardProps) {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme()?? 'light';
   const colors = Colors[colorScheme];
   const shadow = Shadows[colorScheme];
 

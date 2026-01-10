@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const tenantController = require('../controllers/tenantController');
-const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/firebaseAuthMiddleware');
 
 router.get('/', authMiddleware, tenantController.getAll);
 router.post('/', authMiddleware, tenantController.create);

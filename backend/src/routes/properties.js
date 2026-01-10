@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const propertyController = require('../controllers/propertyController');
-const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/firebaseAuthMiddleware');
 // Ajouter middleware d'authentification si tu veux sécuriser les routes
 
 

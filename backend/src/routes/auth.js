@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
-const authMiddleware = require('../middleware/authMiddleware');
+// Register and login should be public endpoints (no auth middleware)
 
-router.post('/register', authMiddleware, authController.register);
-router.post('/login', authMiddleware, authController.login);
+router.post('/register', authController.register);
+router.post('/login', authController.login);
 
 module.exports = router;
